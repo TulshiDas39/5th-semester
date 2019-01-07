@@ -1,0 +1,4 @@
+1.student er roll add kora database e
+2. loader gif lagano
+3. due te ekta problem ase.
+4. md5 kore password store korte hobe

@@ -1,0 +1,15 @@
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\TestConsoleApp.exe.config
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\TestConsoleApp.exe
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\TestConsoleApp.pdb
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\DataModel.dll
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\EntityFramework.dll
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\DataModel.pdb
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\DataModel.dll.config
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\EntityFramework.xml
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\obj\Debug\TestConsoleApp.csprojResolveAssemblyReference.cache
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\obj\Debug\TestConsoleApp.csproj.CoreCompileInputs.cache
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\obj\Debug\TestConsoleApp.csproj.CopyComplete
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\obj\Debug\TestConsoleApp.exe
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\obj\Debug\TestConsoleApp.pdb
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\EntityFramework.SqlServer.dll
+F:\CSE 502\DOTNET\DotNetSample\TestConsoleApp\bin\Debug\EntityFramework.SqlServer.xml

@@ -1,0 +1,12 @@
+F:\CSE 502\DOTNET\DotNetSample\DataModel\bin\Debug\DataModel.dll.config
+F:\CSE 502\DOTNET\DotNetSample\DataModel\bin\Debug\DataModel.dll
+F:\CSE 502\DOTNET\DotNetSample\DataModel\bin\Debug\DataModel.pdb
+F:\CSE 502\DOTNET\DotNetSample\DataModel\bin\Debug\EntityFramework.dll
+F:\CSE 502\DOTNET\DotNetSample\DataModel\bin\Debug\EntityFramework.SqlServer.dll
+F:\CSE 502\DOTNET\DotNetSample\DataModel\bin\Debug\EntityFramework.xml
+F:\CSE 502\DOTNET\DotNetSample\DataModel\bin\Debug\EntityFramework.SqlServer.xml
+F:\CSE 502\DOTNET\DotNetSample\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+F:\CSE 502\DOTNET\DotNetSample\DataModel\obj\Debug\DataModel.csproj.CoreCompileInputs.cache
+F:\CSE 502\DOTNET\DotNetSample\DataModel\obj\Debug\DataModel.csproj.CopyComplete
+F:\CSE 502\DOTNET\DotNetSample\DataModel\obj\Debug\DataModel.dll
+F:\CSE 502\DOTNET\DotNetSample\DataModel\obj\Debug\DataModel.pdb

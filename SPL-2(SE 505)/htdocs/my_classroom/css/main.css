@@ -1,0 +1,128 @@
+#tabr1{
+	margin: 0 auto;
+	width: 500px;
+	padding-top:25px;
+}
+
+#container{
+	margin: 0 auto;
+	width: 800px;
+}
+
+.login_form{
+	width: 200px;
+}
+
+#tabr1 {
+    background-color: bada55;
+}
+#app_name {
+    width: 200px;
+	margin: auto auto;
+}
+
+#app_title{
+	color: black;
+}
+
+#app_title:hover{
+	color: #1D6DC1;
+}
+
+h2 {
+    font-family: Comic Sans MS;
+	display:inline;
+}
+
+#form_div {
+margin: 0 auto;
+width: 50%;
+}
+
+a{
+	text-decoration: none;
+}
+
+.icons{
+	height: 16px;
+	width: 16px;
+}
+
+/*universal*/
+
+
+/*assignment*/
+.container, .container  input[type=text]{
+	width: 500px;
+}
+
+#msg_title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.red_star{
+	color: red;
+}
+
+.spacer {
+    margin-right: 30px;
+}
+
+#text-input {
+    width: 500px;
+}
+
+#chatbox {
+    margin: 0 auto;
+    width: 580px;
+    height: 400px;
+    overflow-y: auto;
+}
+
+#message_box {
+    width: 580px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.export_type label{
+	display: inline;
+}
+
+#export_group{
+	margin-top: 20px;
+}
+
+.image_container{
+	width: 700px;
+	height: 500px;
+}
+
+#pic{
+	width:200px;
+	height:200px;
+}
+
+#scrolls, #chatbox, #conversation, #msghistory, #reply_list{
+	
+	width: 500px;
+	height:500px;
+	overflow: auto;
+}
+
+.counter{
+	border-radius:10px;
+	padding:1px 5px 2px 5px;
+	margin: 0 0 0 5px;
+	color:#666;
+	background:#E5E5E5;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+}

@@ -1,0 +1,357 @@
+title page:
+
+%  A simple AAU report template.
+%  2015-05-08 v. 1.2.0
+%  Copyright 2010-2015 by Jesper Kjær Nielsen <jkn@es.aau.dk>
+%
+%  This is free software: you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation, either version 3 of the License, or
+%  (at your option) any later version.
+%
+%  This is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+%
+\pdfbookmark[0]{Front page}{label:frontpage}%
+\begin{titlepage}
+  \addtolength{\hoffset}{0.5\evensidemargin-0.5\oddsidemargin} %set equal margins on the frontpage - remove this line if you want default margins
+  \noindent%
+  \begin{tabular}{@{}p{\textwidth}@{}}
+    \toprule[2pt]
+    \midrule
+    \vspace{0.2cm}
+    \begin{center}
+    \Huge{\textbf{
+      Simplex Method Implementation% insert your title here
+    }}
+    \end{center}
+    \begin{center}
+      \Large{
+       CSE:501, Parallel Computing% insert your subtitle here
+      }
+    \end{center}
+    \vspace{0.2cm}\\
+    \midrule
+    \toprule[2pt]
+  \end{tabular}
+  \vspace{4 cm}
+  \begin{center}
+    {\large
+      Submitted by%Insert document type (e.g., Project Report)
+    }\\
+    \vspace{0.2cm}
+    {\Large
+      Tulshi Chandra Das, Roll:BSSE0811%Insert your group name or real names here
+   	 \\
+    }
+    \vspace{0.2cm}
+    {\Large
+      Maloy Kanti Sarkar, Roll:BSSE0834%Insert your group name or real names here
+      \\
+    }
+   \vspace{0.2cm}
+    
+  \end{center}
+  \vfill
+  
+  
+  
+   \begin{center}
+    {\large
+      Submitted to%Insert document type (e.g., Project Report)
+    }\\
+    \vspace{0.2cm}
+    {\Large
+      Dr. B M Mainul Hossain\\
+      Assistant Professor,IIT,DU %Insert your group name or real names here
+   	 \\
+    }
+   \vspace{0.2cm}
+    
+  \end{center}
+  \vfill
+  
+  
+  \begin{center}
+  15 March, 2018\\
+  \end{center}
+\end{titlepage}
+\clearpage
+
+
+
+
+
+
+page1:
+
+
+
+\makeatletter
+\renewcommand{\thesection}{%
+  \ifnum\c@chapter<1 \@arabic\c@section
+  \else \thechapter.\@arabic\c@section
+  \fi
+}
+
+\makeatother
+\thispagestyle{empty}
+{\normalsize 
+\vfill % push the content to the bottom of the page
+%\noindent Copyright \copyright{} Aalborg University 2015\par
+\vspace{0.2cm}
+\noindent
+\section*{}
+\textbf{Abstract- The simplex method is frequently the most efficient method of solving
+linear programming (LP) problems. We review previous
+attempts to parallelise the simplex method in relation to efficient serial
+simplex techniques and the nature of practical LP problems. For the
+major challenge of solving general large sparse LP problems, there has
+been no parallelisation of the simplex method that offers significantly
+improved performance over a good serial implementation. However,
+there has been some success in developing parallel solvers for LPs that
+are dense or have particular structural properties.\\
+Keywords: linear programming, simplex method, parallel computing
+}
+\section{Introduction}
+Simplex method is an algorithm which is used to solve the linear programming problems effeciently.\\
+We consider the computation of econometric estimators given by the optimization
+problem: minx z = 8x1 +9x2, where x1,x2 are the variables.\\
+$2x1 + 3x2 \leq 50\\
+2x1 + 6x2 \leq 80\\
+3x1 + 3x2 \leq 70 \\
+$
+Simplex method works on standard form of the equations. So, we have to transform the equations to standard form:
+z = = 8x1 +9x2 + s1 + s2 + s3
+$
+2x1 + 3x2 + s1 = 50\\
+2x1 + 6x2 + s2 = 80\\
+3x1 + 3x2 +s3 = 70 \\
+$
+Here s1,s2 and s3 are slack variable.\\
+The Starting Tableau
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c|c|c| } 
+ \hline
+ Basic & z & x1 & x2 & s1 & s2 & s3 & solution \\ 
+ \hline
+ z & 1 & -8 & -9 & 0 & 0 & 0 & 0 \\ 
+ \hline
+ s1 & 0 & 2 & 3 & 1 & 0 & 0 & 50 \\ 
+ \hline
+ s2 & 0 & 2 & 6 & 0 & 1 & 0 & 80 \\ 
+ \hline
+ s3 & 0 & 3 & 3 & 0 & 0 & 1 & 70 \\ 
+ \hline
+\end{tabular}
+\end{center}
+For optimization problems without closed form solutions, an iterative procedure is typically used. These algorithms successively evaluate the objective function z at
+different trial parameter vectors until a parameter vector achieves a convergence criterion.
+
+Let bi be the RHS of the ith row. Let aij be the coefficient of the entering variable xj in the ith row. The following “minimum ratio test” decides the leaving variable
+
+The optimization steps are:\\
+1. Determining the pivot row and pivot element using aij and xj\\
+2. Make a non basic variable to basic variable\\
+3. change the pivot row\\
+4. Then change all other element in the table\\
+
+The step 1 and 2 and 3 are serialized process and not costly. The step 4 is more costly and time consuming. We will parallelise the step 3. 
+
+There are two main sources of computation time in these numerical procedures.
+First, for each trial vector of parameters, there is the computational cost of evaluating
+the objective function at this vector of parameters. Where the objective function
+involves simulation or the solution of a complex behavioral model, such as a dynamic
+programming model, the objective function level computation costs can be large. A
+second source of computational costs is that for a high dimensional and continuous
+parameter space , a large number of vectors of parameters may need to be tried
+before the convergence criterion is achieved. This parameter level computation cost is
+increasing in the number of parameters, which is generally related to the complexity
+of the underlying behavioral model.
+
+\section{Related work}
+\subsection{Concept of MPI}
+Most popular high-performance parallel architectures used in the parallel programming can be divided into two classes: message passing and shared storage. The cost of message passing parallel processing is larger, suitable for
+large-grain process-level parallel computing. Compared with other parallel
+programming environment, message passing has good portability, supported
+by almost all parallel environments. Meanwhile, it has good scalability and
+complete asynchronous communication function, which can well decompose
+tasks according to the requirements of users, organize data exchange between
+dierent processes and is applied to scalable parallel algorithms. MPI is an
+interface mode widely used in various parallel clusters and network environ-
+ments based on a variety of reliable message passing libraries. MPI is a message
+passing parallel programming standard used to build highly reliable, scalable
+and 
+exible distributed applications, such as work
+ow, network management,
+communication services. MPI is a language-independent communications pro-
+tocol. FORTRAN, C and C++ can directly call the API library. The goals of
+MPI are high performance, scalability and portability. MPI is a library spec-
+ication for message passing, not a language. Message Passing Interface is a
+standard developed by the Message Passing Interface Forum (MPIF). MPI is
+a standard library specication designed to support parallel computing in a
+distributed memory environment. The rst version (MPI-1) was published in
+1994 and the second version (MPI-2) was published in 1997 [1]. Both point-
+to-point and collective communication are supported. MPICH is an available
+and portable implementation of MPI, a standard for message passing used
+in parallel computing. MPI has become the most popular message passing
+standard for parallel programming. There are several MPI implementations
+among which MPICH is the most popular one. MPICH1 is the original im-
+plementation of MPICH that implements the MPI- 1standard. MPICH2 is a
+high-performance and widely portable implementation of the MPI standard
+(both MPI-1 and MPI-2). The goals of MPICH2 are to provide an implementa-
+tion of MPI that eciently supports dierent computation and communication
+platforms including commodity clusters, high-speed networks and proprietary
+high-end computing systems.
+The standards of MPI are as follows [2]:
+ -Point-to-point communication\\
+ -Collective operations\\
+ -Communication contexts\\
+ -Process groups.\\
+ -Process topologies\\
+ -Bindings for FORTRAN 77 and C\\
+ -Environmental management and inquiry\\
+ -Proling interface\\
+\subsection{MPI Functions}
+MPI is a library with hundreds of function-calling interfaces, and FORTRAN,
+C language and C++ can directly call these functions. Many parallel programs
+
+\begin{center}Table 1: MPI Basic Functions \end{center}
+\begin{center}
+\begin{tabular}{ |c|c|} 
+ \hline
+ Function & Functionalities \\ 
+ \hline
+ MPI Init() & Initialization  \\ 
+ \hline
+ MPI Finalize() & Termination \\ 
+ \hline
+ MPI Send() & Send \\ 
+ \hline
+ MPI Recv() & Receive \\ 
+ \hline
+ MPI Comm size() & Access to the number of processes \\ 
+ \hline
+ MPI Comm rank() & Access to the identication number of a process \\ 
+ \hline
+ \end{tabular}
+ \end{center}
+
+can be written with just six basic functions, almost complete all of the commu-
+nication functions. Table 1 illustrates the basic functions. MPI Init() initializes
+the MPI environment and assigns all spawned processes; MPI Finalize() termi-
+nates the MPI environment; MPI Comm size() nds the number of processes
+in a communication group; MPI Comm rank() gives the identication num-
+ber of a process in a communication group; MPI Send() sends message to the
+destination process of rank dest and MPI Recv() receives message from the
+specied process of rank source.
+
+\subsection{The Messing Passing Process of MPI}
+MPI is a parallel programming standard based on message passing, whose
+function is to exchange information, coordinate and control the implementa-
+tion steps with the denition of program grammar and semantics in the core
+library by sending messages between the concurrent execution parts. First all
+of the MPI programs contain mpi:h header le, and then complete the initial-
+ization of the program by MPI Init(), after that, establish process topology
+structure and new communicator and call the functions and applications to be
+used for each process, nally use MPI Finalize() to terminate each process.
+
+\subsection{Simplex algorithm}
+Suppose,
+Objective function,maximise z = ax1 + bx2\\
+Subject to constraints,\\
+$
+ax1 + bx2 \leq c1\\
+ax1 + bx2 \leq c2\\
+ax1 + bx2 \leq c3 \\
+x1,x2 \geq 0\\
+$
+Introducing slack variables, the LPP is same as,
+Objective function,maximise z = ax1 + bx2 + s1 +s2 + s3\\
+ax1 + bx2 + s1 = c1\\
+ax1 + bx2 + s2 = c2\\
+ax1 + bx2 + s3 = c3 \\
+$x1,x2,s1,s2,s3 \geq 0 \\$
+
+\begin{center}
+Basic Feasible Solution
+\end{center}
+Let,
+\begin{itemize}
+\item -x1,x2 as non basic variable
+\item -Then BFS can be got immediately as ,(0,0,c1,c2,c3)
+\end{itemize}
+
+This is possible because in the LHS of the constraint equations (*) the coefficients of the basic variables s1, s2, s3 form an Identity matrix (of size 3 x 3).
+
+\begin{center}
+Closer Look (1)
+\end{center}
+
+\begin{itemize}
+\item We note that the z-row is the objective function row.
+\item The remaining 3 rows are the basic variable rows.
+\item Each row corresponds to a basic variable;
+\begin{itemize}
+\item the leftmost variable denotes the basic variable corresponding to that row. 
+\end{itemize}
+
+\item In the objective function row,
+\begin{itemize}
+\item the coefficients of the basic variables are zero.
+\end{itemize}
+\item In each column corresponding to a basic variable, 
+\begin{itemize}
+\item basic variable has a non-zero coefficient, namely 1, 
+\item all the other basic variables have zero coefficients.
+\end{itemize}
+\item We see at present, the objective function, z,  has value zero.
+\begin{itemize}
+\item the leftmost variable denotes the basic variable corresponding to that row. 
+\end{itemize}
+\item We now seek to make 
+\begin{itemize}
+\item one of the nonbasic variables as basic (and so) one of the basic variables will become nonbasic (that is will drop down to zero)
+\item the nonbasic variable that will become basic is chosen such that the objective function will “improve”: 
+\end{itemize}
+\item The nonbasic variable that will become basic is referred to as “entering” variable and the basic variable that will become nonbasic is referred to as “leaving” variable.
+
+\end{itemize}
+
+\begin{center}
+ Criterion for “leaving” variable (Feasibilty Condition)
+\end{center}
+Let while $b_i $ be the RHS of the ith row. Let $a_ij $ be the coefficient of the entering variable $x_j$ in the ith row. The following “minimum ratio test” decides the leaving variable:
+Choose $x_k$ as the leaving variable where k is given as that row index i for which the ratio \\
+\{$b_i \div a_ij : a_ij \geq 0 $\} is least (break the ties arbitrary)\\
+
+Pivot element:\\
+\begin{itemize}
+\item The entering variable column is called the pivot column.
+\item The leaving variable row is called the pivot row.
+\item The coefficient in the intersection of the two is referred to as the pivot element.
+\end{itemize}
+Operations: We apply elementary row operations to modify the simplex tableau so that the pivot column has 1 at the pivot element and zero in all other places.\\
+\\The elementary Row operations  are as follows:
+\begin{itemize}
+\item New pivot row = old pivot row  pivot element
+\item New z row = old z row – (coefficient of the entering variable in old z row * New pivot row) 
+\item Any other new row = corresponding old row – (old coefficient of the entering variable in that row * New  pivot row) 
+\item We shall also change the legend of the new pivot row only as the entering variable.
+\end{itemize}
+
+The last tableau is the optimal tableau as all entries in the objective function row are $\geq 0 $ and the LPP is a maximization problem.\\
+\section*{References}
+
+\begin{enumerate}
+\item W. Gropp, E. Lusk, "Implementing MPI: the 1994 MPI Implementors Workshop", Pro-
+ceedings of Scalable Parallel Libraries Conference, pp. 55-59, 2002.
+\item Y. Aoyama, J. Nakano, "RS/6000 SP: Practical MPI Programming", International Tech-
+nical Support Organization,August, 1999.
+\end{enumerate}
+
+

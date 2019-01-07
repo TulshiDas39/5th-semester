@@ -1,0 +1,5 @@
+1.online latex templete: https://www.overleaf.com/15435386trbmnhwqhssp#/58522727/
+2.online latex: https://www.sharelatex.com/project/5aca5443daf3986233c38866
+3.online delete page from pdf: https://www.sejda.com/delete-pdf-pages
+4.simplex parallel implementation: https://github.com/madcat1991/mpi_simplex_method
+5.Online equation to latext: http://www.hostmath.com/

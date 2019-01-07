@@ -1,0 +1,76 @@
+Username:	mpiuser
+password:	mpi123
+IP:		10.100.104.1RR	netmask:255.255.254.0
+
+append hostlist.txt to /etc/hosts
+
+wget http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz
+tar -xzf mpich-3.2.1.tar.gz 
+cd mpich-3.2.1
+sudo apt-get install build-essential
+./configure --disable-fortran
+make
+sudo make install
+mpiexec --version
+
+sudo apt-get install openssh-server
+
+
+For master:
+ssh-keygen -t rsa	//(pres enter enter)
+ssh-copy-id bsse8rr //(client roll)
+eval 'ssh-agent'
+ssh-add ~/.ssh/id_rsa
+ssh bsse8rr	//check that passwordless login is ok
+
+For client:
+ssh-keygen -t rsa	//(pres enter enter)
+ssh-copy-id bsse8rr //(master roll)
+eval 'ssh-agent'
+ssh-add ~/.ssh/id_rsa
+ssh bsse8rr	//check that passwordless login is ok
+
+For master:
+sudo apt-get install nfs-kernel-server
+mkdir /home/mpiuser/cloud
+sudo nano /etc/exports
+
+#append following line without ""
+"/home/mpiuser/cloud *(rw,sync,no_root_squash,no_subtree_check)"
+
+sudo exportfs -a
+sudo service nfs-kernel-server restart
+
+For client:
+sudo apt-get install nfs-common
+mkdir /home/mpiuser/cloud
+sudo mount -t nfs bsse8rr:/home/mpiuser/cloud ~/cloud	#8rr=master roll
+df -h
+nano /etc/fstab
+#append following line without ""
+"bsse8rr:/home/mpiuser/cloud /home/mpiuser/cloud nfs" #8rr=master roll
+
+For master:
+## make a mpi.c file in cloud
+## compile it
+mpicc -o mpi mpi.c
+
+## run it with your own pc
+mpiexec -np 10 ./mpi
+
+## run it with multiple pc
+mpirun -np 5 -hosts bsse8rr,bsse8rr ./mpi	## first 8rr = master roll
+						## second 8rr = client roll
+
+
+
+
+
+
+
+
+
+
+
+
+

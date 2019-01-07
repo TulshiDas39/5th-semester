@@ -1,0 +1,3 @@
+1.Cost calcution:https://www.youtube.com/watch?v=rKN60UnVsMw
+2.Cost in Linear and Binary search: https://www.youtube.com/watch?v=iq32bkm5n4Q
+3.

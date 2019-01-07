@@ -1,0 +1,2 @@
+1.send mail help: https://stackoverflow.com/questions/17364323/phpmail
+2.link click handling: https://stackoverflow.com/questions/5205155/codeigniter-correct-way-to-link-to-another-page-in-a-view

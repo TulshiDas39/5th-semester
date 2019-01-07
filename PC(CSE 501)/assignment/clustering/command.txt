@@ -1,0 +1,16 @@
+Username:	mpiuser
+password:	mpi123
+IP:		10.100.104.1RR	netmask:255.255.254.0
+
+copy hostlist.txt to /etc/hosts
+
+wget http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz
+tar -xzf mpich-3.2.1.tar.gz 
+cd mpich-3.2.
+sudo apt-get install build-essential
+./configure --disable-fortran
+make
+sudo make install
+mpiexec --version
+
+sudo apt-get install openssh-server

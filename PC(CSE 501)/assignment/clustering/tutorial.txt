@@ -1,0 +1,88 @@
+    1  ifconfig
+    2  sudo apt-get install net-tools 
+    3  ifconfig
+    4  clear
+    5  apt-get update 
+    6  sudo apt-get update
+    7  ls
+    8  sudo apt-get install build-essential 
+    9  clear
+   10  cd Downloads/
+   11  ls
+   12  tar -xzf mpich-3.2.1.tar.gz 
+   13  cd mpich-3.2.1/
+   14  ./configure --disable-fortran
+   15  make
+   16  make install
+   17  sudo make
+   18  sudo make install
+   19  clear
+   20  mpirun --version
+   21  mpiexec --version
+   22  clear
+   23  cd ~
+   24  ls
+   25  nano test.c
+   26  mpicc -o test test.c 
+   27  mpiexec -p 10 ./test
+   28  mpirun -p 10 ./test
+   29  mpirun -n 10 ./test
+   30  clear
+   31  cat /etc/hosts
+   32  sudo apt-get install openssh-server 
+   33  nano /etc/hosts
+   34  sudo nano /etc/hosts
+   35  cd .ssh
+   36  cd /root/.ssh
+   37  clear
+   38  ssh-keygen -t rsa
+   39  cd .ssh/
+   40  ls
+   41  ssh client 
+   42  ls
+   43  sudo apt-get install nfs-kernel-server 
+   44  sudo nano /etc/hosts
+   45  ssh client 
+   46  ssh mpiuser@client
+   47  ssh client
+   48  ssh mpiuser@client
+   49  ssh client
+   50  cd ~
+   51  ls
+   52  ssh-keygen -t rsa
+   53  ssh-copy-id client 
+   54  who ami
+   55  whoami
+   56  ifconfig
+   57  ssh client 
+   58  ssh-copy-id client 
+   59  ssh client 
+   60  ssh-add 
+   61  ssh client 
+   62  ssh-add -l
+   63  exit
+   64  eval 'ssh-agent'
+   65  ssh-add ~/.ssh/id_rsa
+   66  ssh client 
+   67  sudo nano /etc/exports
+   68  cat /etc/exports 
+   69  sudo exportfs -a
+   70  ls
+   71  mkdir cloud
+   72  sudo exportfs -a
+   73  sudo service nfs-kernel-server restart 
+   74  ls
+   75  cd cloud/
+   76  ls
+   77  mpicc -o test test.c 
+   78  mpirun -np 4 ./test
+   79  mpirun -np 4 -hosts client,localhost ./test
+   80  mpirun -np 4 -hosts client,master ./test
+   81  clear
+   82  nano mpi.c
+   83  mpicc -o mpi mpi.c
+   84  mpirun -np 4 -hosts client,master ./mpi
+   85  mpirun -np 10 -hosts client,master ./mpi
+   86  cat /etc/hosts
+   87  cd ..
+   88  cd Desktop/

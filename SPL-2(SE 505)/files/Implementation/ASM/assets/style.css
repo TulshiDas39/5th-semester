@@ -1,0 +1,50 @@
+.header{
+	background: green;
+	height: 6em;
+	width: 100%;
+}
+.content{
+	background: #007bff;
+	height: 25em;
+	width: 100%;
+	display: table;
+}
+#welcomeText{
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+	font-family: "Helvetica Neue ","Times New Roman","Century Gothic" ;
+	font-size: 3em;
+}
+.rHeader{
+	height: 100%;
+	font-family: "Times New Roman";
+	font-size: 6em;
+	/*background: #1b1e21;*/
+}
+
+.lHeader{
+	float: left;
+	height: 100%;
+	width: 60%;
+	/*background: #4e4a4a;*/
+}
+#techBtn{
+	background: transparent;
+	vertical-align: top;
+	font-family: "Times New Roman";
+	font-size: 0.5em;
+}
+
+#learnBtn{
+	background: transparent;
+	vertical-align: top;
+	font-family: "Times New Roman";
+	font-size: 0.5em;
+}
+#tFooter{
+	font-family: "Century Gothic";
+	font-weight: bold;
+	font-size: 1.5em;
+	text-align: center;
+}

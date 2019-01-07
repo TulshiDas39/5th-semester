@@ -1,0 +1,4 @@
+load teacher_groups: "http://localhost/SPL/index.php/teacher/load_groups/<?php echo $this->session->userdata('user_id'); ?>"
+calendar: "http://localhost/SPL/index.php/create_calendar"
+teacher settings: "http://localhost/SPL/index.php/settings/teacher_settings"
+log out: "http://localhost/SPL/index.php/login/log_out"
